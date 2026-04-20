@@ -27,8 +27,10 @@ _start:
     or eax, 1
     mov cr0, eax
 
-    // Long jump!
-    jmp 0x08:protected_mode
+    // Long jump has been modified into this
+    .byte 0xEA
+    .long protected_mode
+    .word 0x08
 
 // Once in protected mode we set some more regs and jump into C
 .code32
